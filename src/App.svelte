@@ -2,6 +2,7 @@
   import svelteLogo from "./assets/svelte.svg";
   import viteLogo from "/vite.svg";
   import Counter from "./lib/Counter.svelte";
+  import Graph from "./lib/Graph.svelte";
 </script>
 
 <main>
@@ -20,6 +21,9 @@
   </div>
 
   <div>Something else here</div>
+  <div class="graph">
+    <Graph />
+  </div>
 
   <p>
     Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the
@@ -44,5 +48,8 @@
   }
   .read-the-docs {
     color: #888;
+  }
+  .graph {
+    height: 400px;
   }
 </style>
