@@ -6,6 +6,7 @@
   import { onMount } from "svelte";
 
   let container: HTMLElement;
+  let createNodeModal: HTMLDialogElement;
 
   onMount(() => {
     // Create a graph and assign nodes with random positions
@@ -37,8 +38,28 @@
     //   }
     //   return res;
     // });
+    document.addEventListener("keypress", (event) => {
+      console.log("key pressed");
+      if (event.key === "c") {
+        createNodeModal.showModal();
+      }
+      console.log("should be read only ? ", !createNodeModal.open);
+    });
   });
 </script>
+
+<dialog id="my_modal_1" class="modal" bind:this={createNodeModal}>
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Nouvelle note</h3>
+    <textarea placeholder="Note" class="textarea textarea-bordered textarea-sm w-full mt-4"></textarea>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Enregistrer</button>
+      </form>
+    </div>
+  </div>
+</dialog>
 
 <div id="graph-container" bind:this={container} class="container"></div>
 
