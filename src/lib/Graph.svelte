@@ -8,6 +8,8 @@
   let container: HTMLElement;
   let createNodeModal: HTMLDialogElement;
 
+  let noteContent: string = "";
+
   onMount(() => {
     // Create a graph and assign nodes with random positions
     const graph = new Graph();
@@ -51,7 +53,8 @@
 <dialog id="my_modal_1" class="modal" bind:this={createNodeModal}>
   <div class="modal-box">
     <h3 class="font-bold text-lg">Nouvelle note</h3>
-    <textarea placeholder="Note" class="textarea textarea-bordered textarea-sm w-full mt-4"></textarea>
+    <textarea placeholder="Note" class="textarea textarea-bordered textarea-sm w-full mt-4" bind:value={noteContent}
+    ></textarea>
     <div class="modal-action">
       <form method="dialog">
         <!-- if there is a button in form, it will close the modal -->
