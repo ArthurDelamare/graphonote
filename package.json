@@ -12,6 +12,7 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^3.0.2",
     "@tsconfig/svelte": "^5.0.2",
+    "@types/uuid": "^9.0.8",
     "autoprefixer": "^10.4.19",
     "daisyui": "^4.11.1",
     "postcss": "^8.4.38",
@@ -25,6 +26,7 @@
   "dependencies": {
     "graphology": "^0.25.4",
     "graphology-layout": "^0.6.1",
-    "sigma": "^3.0.0-beta.18"
+    "sigma": "^3.0.0-beta.18",
+    "uuid": "^9.0.1"
   }
 }

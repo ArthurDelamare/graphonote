@@ -4,6 +4,8 @@
   import Sigma from "sigma";
   //   import type { NodeDisplayData } from "sigma/types";
   import { onMount } from "svelte";
+  import { addNote, newNote, notes } from "../store/notes";
+  import { get } from "svelte/store";
 
   let container: HTMLElement;
   let createNodeModal: HTMLDialogElement;
@@ -15,9 +17,10 @@
     const graph = new Graph();
     graph.addNode("1", { label: "Node 1", x: 0, y: 0, size: 10, color: "blue" });
     graph.addNode("2", { label: "Node 2", x: 1, y: 1, size: 20, color: "red" });
-    for (let i = 3; i < 10; i++) {
-      graph.addNode(`${i}`, { label: `Node ${i}`, size: 15, color: "red" });
-    }
+
+    get(notes).forEach((note) =>
+      graph.addNode(`${note.date.getTime()}`, { label: `Node ${note.date.getTime()}`, size: 15, color: "red" })
+    );
     random.assign(graph);
 
     // Render the graph - binded on its container
@@ -31,6 +34,20 @@
         size: 10,
         color: "red",
       });
+    });
+    newNote.subscribe((note) => {
+      if (note) {
+        const coordinates = {
+          x: Math.random(),
+          y: Math.random(),
+        };
+        graph.addNode(note.id, {
+          ...coordinates,
+          size: 10,
+          color: "red",
+          label: note.date,
+        });
+      }
     });
 
     // sigmaInstance.setSetting("nodeReducer", (node, data) => {
@@ -58,7 +75,7 @@
     <div class="modal-action">
       <form method="dialog">
         <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">Enregistrer</button>
+        <button class="btn" on:click={() => addNote(noteContent)}>Enregistrer</button>
       </form>
     </div>
   </div>
