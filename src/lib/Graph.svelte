@@ -2,7 +2,6 @@
   import Graph from "graphology";
   import { random } from "graphology-layout";
   import Sigma from "sigma";
-  //   import type { NodeDisplayData } from "sigma/types";
   import { onMount } from "svelte";
   import { addNote, newNote, notes } from "../store/notes";
   import { get } from "svelte/store";
@@ -50,13 +49,6 @@
       }
     });
 
-    // sigmaInstance.setSetting("nodeReducer", (node, data) => {
-    //   const res: Partial<NodeDisplayData> = { ...data };
-    //   if (node === "1") {
-    //     res.color = "#BDBDBD";
-    //   }
-    //   return res;
-    // });
     document.addEventListener("keypress", (event) => {
       console.log("key pressed");
       if (event.key === "c") {
