@@ -42,7 +42,7 @@
         };
         graph.addNode(note.id, {
           ...coordinates,
-          size: 10,
+          size: (val = note.content.length, max = 1, min = 0.2) => (val - min) / (max - min),
           color: "red",
           label: note.date,
         });
