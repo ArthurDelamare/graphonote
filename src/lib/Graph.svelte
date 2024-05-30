@@ -15,7 +15,7 @@
     // Create a graph and assign nodes with random positions
     const graph = new Graph();
     graph.addNode("1", { label: "Node 1", x: 0, y: 0, size: 10, color: "blue" });
-    graph.addNode("2", { label: "Node 2", x: 1, y: 1, size: 20, color: "red" });
+    graph.addNode("2", { label: "Node 2", x: 1, y: 1, size: 15, color: "red" });
 
     get(notes).forEach((note) =>
       graph.addNode(`${note.date.getTime()}`, { label: `Node ${note.date.getTime()}`, size: 15, color: "red" })
@@ -42,7 +42,7 @@
         };
         graph.addNode(note.id, {
           ...coordinates,
-          size: (val = note.content.length, max = 1, min = 0.2) => (val - min) / (max - min),
+          size: (0.2 + Math.max(0.2, note.content.length / 375)) * 25,
           color: "red",
           label: note.date,
         });
